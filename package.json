@@ -1,0 +1,13 @@
+{
+  "name": "tests-introduction",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Otavio Braga",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
