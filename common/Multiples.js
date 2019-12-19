@@ -52,5 +52,8 @@ const getMultiples = ({numbers, orOperands, andOperands}) => {
 
 module.exports = {
     getMultiples,
-    getNumbers
+    getNumbers,
+    sumResults,
+    isMultipleOfAny,
+    isMultipleOfAll
 }
