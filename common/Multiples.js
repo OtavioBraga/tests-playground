@@ -4,9 +4,9 @@ const sumResults = results => results
     .filter(number => number !== false)
     .reduce((a,b) => a + b, 0)
 
-const isMultipleOfAny = (number, operands) => operands.find(operand => number % operand === 0)
+const isMultipleOfAny = (number, operands) => !!operands.find(operand => number % operand === 0)
 
-const isMultipleOfAll = (number, operands) => operands.find(operand => number % operand !== 0)
+const isMultipleOfAll = (number, operands) => !operands.find(operand => number % operand !== 0)
 
 const getMultiples = ({numbers, orOperands, andOperands}) => {
 
@@ -31,9 +31,9 @@ const getMultiples = ({numbers, orOperands, andOperands}) => {
     }
 
     const results = numbers.map(number => {
-        const orOperandsResult = orOperands.length > 0 ? !!isMultipleOfAny(number, orOperands) : true
+        const orOperandsResult = orOperands.length > 0 ? isMultipleOfAny(number, orOperands) : true
 
-        const andOperandsResult = andOperands.length > 0 ? !isMultipleOfAll(number, andOperands) : true
+        const andOperandsResult = andOperands.length > 0 ? isMultipleOfAll(number, andOperands) : true
 
         if (orOperandsResult && andOperandsResult) {
             return number
