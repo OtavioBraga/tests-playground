@@ -73,4 +73,53 @@ describe('Multiple tests', () => {
             })
         }).toThrow('numbers must be a array of numbers')
     })
+
+    it('sum the array of results correctly', () => {
+        const results = [0, 25, false, 25, false, 30, false]
+
+        const sum = Multiples.sumResults(results)
+
+        expect(sum).toBe(80)
+    })
+
+    it('sum the array of results correctly even if a position is true instead of false', () => {
+        const results = [0, 25, true, 25, false, 30, false]
+
+        const sum = Multiples.sumResults(results)
+
+        expect(sum).toBe(80)
+    })
+
+    it('generates a array of numbers correctly', () => {
+        const expectedArray = [0,1,2,3,4]
+
+        expect(
+            Multiples.getNumbers(5)
+        ).toEqual(expectedArray)
+    })
+
+    it('returns true if 7 is multiple of 5, 14 or 7', () => {
+        expect(
+            Multiples.isMultipleOfAny(7, [5, 14, 7])
+        ).toBeTruthy()
+    })
+
+    it('returns true if the 300 is multiple of 50, 25 and 75', () => {
+        expect(
+            Multiples.isMultipleOfAll(300, [50, 25, 75])
+        ).toBeTruthy()
+    })
+
+    it('returns false if 300 isn`t multiple of 50, 25 and 76', () => {
+        expect(
+            Multiples.isMultipleOfAll(300, [50, 25, 76])
+        ).toBeFalsy()
+    })
+
+    it('returns false if 7 isn`t multiple of 5, 16 or 8', () => {
+        expect(
+            Multiples.isMultipleOfAny(7, [5, 16, 8])
+        ).toBeFalsy()
+    })
+
 })

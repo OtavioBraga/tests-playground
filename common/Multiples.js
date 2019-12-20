@@ -1,7 +1,7 @@
 const getNumbers = max => [...Array(max).keys()]
 
 const sumResults = results => results
-    .filter(number => number !== false)
+    .filter(number => typeof number === 'number')
     .reduce((a,b) => a + b, 0)
 
 const isMultipleOfAny = (number, operands) => !!operands.find(operand => number % operand === 0)
