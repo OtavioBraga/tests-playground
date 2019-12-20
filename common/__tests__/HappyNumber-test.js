@@ -8,7 +8,7 @@ describe('isHappyNumber tests', () => {
         expect(result).toBe(true)
     })
 
-    it('returns true for a happy number (8)', () => {
+    it('returns false for a non happy number (8)', () => {
         const result = HappyNumber.isHappyNumber(8)
 
         expect(result).toBe(false)
@@ -18,5 +18,23 @@ describe('isHappyNumber tests', () => {
         expect(() => {
             HappyNumber.isHappyNumber()
         }).toThrow('The initial value must be a number')
+    })
+
+    it('calculates the squares of each digit of a number correctly', () => {
+        const squares = HappyNumber.calculateSquares(42)
+        
+        const expectedSquares = [16, 4]
+
+        expect(squares).toEqual(expectedSquares)
+    })
+
+    it('calculates the sum of squares of a number correctly', () => {
+        const squares = HappyNumber.calculateSquares(42)
+
+        const squaresSum = HappyNumber.sumSquares(squares)
+        
+        const expectedSquaresSum = 20
+
+        expect(squaresSum).toEqual(expectedSquaresSum)
     })
 })
