@@ -37,7 +37,10 @@ const handleMultiples = async () => {
         andOperands
     })
 
-    console.log(results.filter(number => number !== false), sum)
+    CliHelper.write(`
+        Múltiplos: ${results.filter(number => number !== false)} 
+        Soma: ${sum}`
+    )
     
     CliHelper.close()
 }
@@ -67,13 +70,17 @@ const handleWordsAsNumbers = async () => {
     CliHelper.close()
 }
 
-const start = async () => {
+const getAction = index => {
     const actions = {
         1: handleHappyNumber,
         2: handleMultiples,
         3: handleWordsAsNumbers,
     }
 
+    return actions[index]
+}
+
+const start = async () => {
     const question = `
         Qual módulo voce deseja usar?
         
@@ -86,11 +93,13 @@ const start = async () => {
 
     const answer = await CliHelper.requestAnswer(`${question}`)
 
-    if (!Object.keys(actions).includes(answer)) {
+    const action = getAction(answer)
+
+    if (!action) {
         CliHelper.write('Opção inválida \n')
         CliHelper.close()
     } else {
-        actions[answer]()
+        action()
     }
     
 }
@@ -100,4 +109,5 @@ module.exports = {
     handleMultiples,
     handleWordsAsNumbers,
     start,
+    getAction,
 }
