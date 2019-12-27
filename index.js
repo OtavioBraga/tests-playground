@@ -104,6 +104,10 @@ const start = async () => {
     
 }
 
+if (require.main === module) {
+    start()
+}
+
 module.exports = {
     handleHappyNumber,
     handleMultiples,
